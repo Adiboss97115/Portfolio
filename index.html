@@ -1,0 +1,288 @@
+<!--
+  File: index.html
+  Usage: Ouvre ce fichier dans VS Code (Fichier > Ouvrir le dossier) et lance dans le navigateur.
+  Portfolio moderne pour un développeur web junior (Adrien LAVISO).
+  Palette: #007BFF (bleu électrique), #0A192F (bleu nuit), #64FFDA (accent), #FFFFFF (blanc)
+-->
+
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Adrien LAVISO — Développeur Web Junior</title>
+  <meta name="description" content="Portfolio — Adrien LAVISO, développeur web junior | HTML • CSS • JavaScript • React • Node" />
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+  <style>
+    :root{
+      --blue-1:#007BFF; /* bleu électrique */
+      --blue-2:#0A192F; /* bleu nuit */
+      --accent:#64FFDA; /* accent */
+      --bg:#071427;
+      --glass: rgba(255,255,255,0.04);
+      --card: rgba(255,255,255,0.03);
+      --soft: rgba(100,255,218,0.06);
+      --max-width:1100px;
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial; background:linear-gradient(180deg,var(--blue-2) 0%,#041226 100%); color:#e6f0ff}
+    a{color:var(--accent);text-decoration:none}
+    .container{width:calc(100% - 40px);max-width:var(--max-width);margin:0 auto}
+
+    header{position:fixed;top:12px;left:0;right:0;display:flex;align-items:center;justify-content:center;z-index:50}
+    .nav{width:100%;max-width:var(--max-width);display:flex;align-items:center;justify-content:space-between;padding:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));backdrop-filter:blur(6px);border-radius:12px}
+    .logo{display:flex;gap:12px;align-items:center}
+    .logo .mark{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--blue-1),var(--accent));display:grid;place-items:center;font-weight:700;color:var(--blue-2)}
+    nav ul{display:flex;gap:14px;list-style:none;margin:0;padding:0}
+    nav button{background:none;border:1px solid transparent;padding:8px 12px;border-radius:8px;color:inherit;cursor:pointer}
+    nav button:hover{border-color:var(--glass);background:var(--card)}
+
+    main{padding-top:100px;padding-bottom:80px}
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:36px;align-items:center;padding:64px 0}
+    .hero .intro{max-width:640px}
+    .eyebrow{display:inline-block;padding:6px 10px;background:var(--soft);color:var(--accent);border-radius:999px;font-weight:600;font-size:13px}
+    h1{font-size:38px;margin:18px 0 8px;line-height:1.05}
+    p.lead{color:rgba(230,240,255,0.85);font-size:16px;margin:0 0 18px}
+    .cta{display:flex;gap:12px;align-items:center}
+    .btn{padding:12px 16px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
+    .btn-primary{background:linear-gradient(90deg,var(--blue-1),var(--accent));color:var(--blue-2)}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06)}
+
+    .terminal{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;font-family: 'Roboto Mono', monospace;font-size:13px;color:#bfeefd;}
+    .terminal .line{opacity:0.95}
+    .avatar{width:100%;max-width:360px;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.04);box-shadow:0 8px 30px rgba(2,6,23,0.6)}
+    .avatar img{display:block;width:100%;height:100%;object-fit:cover}
+
+    /* Projects */
+    .grid{display:grid;gap:18px}
+    .projects{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);transition:transform .28s,box-shadow .28s}
+    .card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(2,6,23,0.6);}
+    .card .thumb{height:140px;border-radius:8px;overflow:hidden;margin-bottom:12px;background:linear-gradient(90deg,var(--blue-1),#0047b3)}
+    .tags{display:flex;gap:8px;flex-wrap:wrap}
+    .tag{font-size:12px;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.03)}
+
+    /* Skills */
+    .skills{display:flex;gap:12px;flex-wrap:wrap}
+    .skill{min-width:140px;background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03)}
+    .bar{height:8px;background:rgba(255,255,255,0.06);border-radius:999px;margin-top:8px;overflow:hidden}
+    .bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--blue-1),var(--accent));}
+
+    /* Contact */
+    form{display:grid;gap:10px}
+    input,textarea{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:12px;border-radius:8px;color:inherit;resize:vertical}
+    input:focus,textarea:focus{outline:none;border-color:var(--blue-1);box-shadow:0 6px 22px rgba(0,123,255,0.08)}
+    footer{margin-top:48px;padding:28px 0;text-align:center;color:rgba(230,240,255,0.6)}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .avatar{order:-1;margin-bottom:18px}
+      header{padding:0 12px}
+      .nav{padding:8px}
+    }
+
+    /* Simple animations */
+    .glow{animation:glow 3s ease-in-out infinite}
+    @keyframes glow{0%{filter:drop-shadow(0 0 0 rgba(100,255,218,0))}50%{filter:drop-shadow(0 6px 26px rgba(100,255,218,0.12))}100%{filter:drop-shadow(0 0 0 rgba(100,255,218,0))}}
+
+    /* small utilities */
+    .muted{color:rgba(230,240,255,0.65)}
+    .kbd{background:rgba(0,0,0,0.22);padding:6px 8px;border-radius:6px;border:1px solid rgba(255,255,255,0.03);font-family:monospace}
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav container">
+      <div class="logo">
+        <div class="mark">AL</div>
+        <div>
+          <div style="font-weight:700">Adrien LAVISO</div>
+          <div style="font-size:12px;color:rgba(230,240,255,0.6)">Développeur Web Junior</div>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><button onclick="scrollToSection('projects')">Projets</button></li>
+          <li><button onclick="scrollToSection('skills')">Compétences</button></li>
+          <li><button onclick="scrollToSection('about')">À propos</button></li>
+          <li><button onclick="scrollToSection('contact')">Contact</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="intro">
+        <span class="eyebrow">Développement • Front-end • Back-end</span>
+        <h1>Bonjour — je suis <span style="color:var(--accent)">Adrien</span>, développeur web junior.</h1>
+        <p class="lead">Je crée des expériences web modernes et accessibles. J'apprends continuellement et j'aime transformer des idées en interfaces fonctionnelles et esthétiques.</p>
+        <div class="cta">
+          <button class="btn btn-primary" onclick="scrollToSection('projects')">Voir mes projets</button>
+          <a class="btn btn-ghost" href="#contact">Me contacter</a>
+        </div>
+
+        <div style="margin-top:18px">
+          <div class="terminal">
+            <div class="line"><span class="kbd">$</span> git clone https://github.com/adrien-laviso/portfolio (exemple)</div>
+            <div class="line">const stack = ['HTML','CSS','JavaScript','React','Node']</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="avatar">
+        <!-- Remplace par ta photo / avatar -->
+        <img src="assets/photo.jpg" alt="Photo d’Adrien" />
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projets</h2>
+      <p class="muted">Quelques projets réalisés — démonstrations et liens vers le code.</p>
+      <div class="grid projects" style="margin-top:16px">
+        <article class="card">
+          <div class="thumb"></div>
+          <h3>Jeu 2D — Prototype</h3>
+          <p class="muted">Un petit jeu en canvas inspiré de Metal Slug. Vanilla JS + Canvas.</p>
+          <div class="tags" style="margin-top:12px"><span class="tag">HTML</span><span class="tag">Canvas</span><span class="tag">JavaScript</span></div>
+          <div style="margin-top:12px;display:flex;gap:8px;justify-content:flex-end">
+            <a href="#" class="muted">Voir</a>
+            <a href="#" class="muted">Code</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb"></div>
+          <h3>Site vitrine — Clé de Nantes</h3>
+          <p class="muted">Site responsive pour une conciergerie multi-services (HTML / CSS / JS).</p>
+          <div class="tags" style="margin-top:12px"><span class="tag">Responsive</span><span class="tag">CSS</span><span class="tag">Accessibilité</span></div>
+          <div style="margin-top:12px;display:flex;gap:8px;justify-content:flex-end">
+            <a href="#" class="muted">Voir</a>
+            <a href="#" class="muted">Code</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb"></div>
+          <h3>Todo App — React</h3>
+          <p class="muted">Application de gestion de tâches avec React et localStorage.</p>
+          <div class="tags" style="margin-top:12px"><span class="tag">React</span><span class="tag">JS</span><span class="tag">UI</span></div>
+          <div style="margin-top:12px;display:flex;gap:8px;justify-content:flex-end">
+            <a href="#" class="muted">Voir</a>
+            <a href="#" class="muted">Code</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills" style="margin-top:36px">
+      <h2>Compétences</h2>
+      <div class="grid" style="margin-top:12px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));">
+        <div class="skill card">
+          <strong>Front-end</strong>
+          <div class="muted">HTML • CSS • SASS • Tailwind • React</div>
+          <div class="bar"><i style="width:82%"></i></div>
+        </div>
+        <div class="skill card">
+          <strong>JavaScript</strong>
+          <div class="muted">ES6+ • DOM • Fetch • Testing</div>
+          <div class="bar"><i style="width:72%"></i></div>
+        </div>
+        <div class="skill card">
+          <strong>Back-end</strong>
+          <div class="muted">Node.js • Express • APIs • MongoDB</div>
+          <div class="bar"><i style="width:58%"></i></div>
+        </div>
+        <div class="skill card">
+          <strong>Outils</strong>
+          <div class="muted">Git • GitHub • VS Code • Terminal</div>
+          <div class="bar"><i style="width:76%"></i></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" style="margin-top:36px">
+      <h2>À propos</h2>
+      <div class="card" style="margin-top:12px;display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+        <div style="flex:1;min-width:220px">
+          <p>Je suis Adrien, en formation pour devenir développeur web. J'aime construire des interfaces soignées et apprendre de nouvelles technologies. Je suis motivé, curieux et prêt à travailler sur des projets concrets.</p>
+          <p class="muted">Disponible pour des missions junior, stages ou projets freelance.</p>
+        </div>
+        <div style="min-width:220px">
+          <ul style="margin:0;padding:0;list-style:none">
+            <li><strong>Localisation:</strong> Nantes, France</li>
+            <li><strong>Email:</strong> <a href="mailto:adi.laviso2004@gmail.com">adi.laviso2004@gmail.com</a></li>
+            <li><strong>LinkedIn:</strong> <a href="#">linkedin.com/in/adrien-laviso</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" style="margin-top:36px">
+      <h2>Contact</h2>
+      <div class="card" style="margin-top:12px;display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:start">
+        <div>
+          <form id="contactForm" onsubmit="sendForm(event)">
+            <input type="text" id="name" placeholder="Ton nom" required />
+            <input type="email" id="email" placeholder="Ton email" required />
+            <textarea id="message" rows="6" placeholder="Ton message..." required></textarea>
+            <div style="display:flex;gap:10px;align-items:center;margin-top:8px">
+              <button class="btn btn-primary" type="submit">Envoyer</button>
+              <div class="muted" id="formStatus"> </div>
+            </div>
+          </form>
+        </div>
+        <div style="padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005))">
+          <h4>Infos rapides</h4>
+          <p class="muted">Disponible pour stage ou mission junior. Mon garant: informations sur demande.</p>
+          <p><strong>Stack actuelle:</strong></p>
+          <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span><span class="tag">React</span></div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Adrien LAVISO — Développeur Web Junior • <a href="#">GitHub</a> • <a href="#">LinkedIn</a>
+    </footer>
+
+  </main>
+
+  <script>
+    // Small helpers
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function scrollToSection(id){
+      const el = document.getElementById(id);
+      if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+
+    // Fake contact handler (démo) - remplace par un endpoint réel (Formspree, Netlify, backend)
+    function sendForm(e){
+      e.preventDefault();
+      const status = document.getElementById('formStatus');
+      status.textContent = 'Envoi...';
+      // Simule envoi
+      setTimeout(()=>{
+        status.textContent = 'Message envoyé — merci !';
+        document.getElementById('contactForm').reset();
+      },900);
+    }
+
+    // Small typing effect for the hero (simple)
+    (function(){
+      const el = document.querySelector('.terminal .line:nth-child(2)');
+      if(!el) return;
+      const full = "const stack = ['HTML','CSS','JavaScript','React','Node']";
+      el.textContent = '';
+      let i=0;
+      const t = setInterval(()=>{
+        el.textContent += full[i++]||'';
+        if(i>full.length) clearInterval(t);
+      },28);
+    })();
+
+  </script>
+</body>
+</html>
