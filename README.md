@@ -23,7 +23,7 @@ Technologies utilisées :
 - Tailwind CSS
 - Supabase
 
-🔗 Site : https://TON-LIEN-VERCEL.vercel.app
+🔗 Site : https://eclipse-trade.vercel.app
 
 🔗 Code : https://github.com/Adiboss97115/eclipse-trade
 
