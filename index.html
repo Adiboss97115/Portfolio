@@ -166,15 +166,31 @@
         </article>
 
         <article class="card">
-          <div class="thumb"></div>
-          <h3>Todo App — React</h3>
-          <p class="muted">Application de gestion de tâches avec React et localStorage.</p>
-          <div class="tags" style="margin-top:12px"><span class="tag">React</span><span class="tag">JS</span><span class="tag">UI</span></div>
-          <div style="margin-top:12px;display:flex;gap:8px;justify-content:flex-end">
-            <a href="#" class="muted">Voir</a>
-            <a href="#" class="muted">Code</a>
-          </div>
-        </article>
+  <div class="thumb">
+    <img src="assets/eclipsetrade.png" alt="Aperçu du site EclipseTrade" style="width:100%;height:100%;object-fit:cover;">
+  </div>
+
+  <h3>EclipseTrade — Plateforme de trading fictive</h3>
+
+  <p class="muted">
+  EclipseTrade est un projet personnel développé pour pratiquer la création
+  d’une interface web moderne avec Next.js, React, Tailwind CSS et Supabase.
+  Le projet simule une plateforme de trading avec une expérience utilisateur
+  fluide et responsive.
+</p>
+
+  <div class="tags" style="margin-top:12px">
+    <span class="tag">Next.js</span>
+    <span class="tag">React</span>
+    <span class="tag">Tailwind</span>
+    <span class="tag">Supabase</span>
+  </div>
+
+  <div style="margin-top:12px;display:flex;gap:8px;justify-content:flex-end">
+    <a href="https://eclipsetrade.vercel.app" class="muted" target="_blank">Voir</a>
+    <a href="https://github.com/Adiboss97115/eclipse-trade" class="muted" target="_blank">Code</a>
+  </div>
+</article>
       </div>
     </section>
 
@@ -225,15 +241,36 @@
       <h2>Contact</h2>
       <div class="card" style="margin-top:12px;display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:start">
         <div>
-          <form id="contactForm" onsubmit="sendForm(event)">
-            <input type="text" id="name" placeholder="Ton nom" required />
-            <input type="email" id="email" placeholder="Ton email" required />
-            <textarea id="message" rows="6" placeholder="Ton message..." required></textarea>
-            <div style="display:flex;gap:10px;align-items:center;margin-top:8px">
-              <button class="btn btn-primary" type="submit">Envoyer</button>
-              <div class="muted" id="formStatus"> </div>
-            </div>
-          </form>
+          <form action="https://formspree.io/f/mwvzenla" method="POST">
+  
+  <input 
+    type="text" 
+    name="name" 
+    placeholder="Ton nom" 
+    required 
+  />
+
+  <input 
+    type="email" 
+    name="email" 
+    placeholder="Ton email" 
+    required 
+  />
+
+  <textarea 
+    name="message" 
+    rows="6" 
+    placeholder="Ton message..." 
+    required
+  ></textarea>
+
+  <div style="display:flex;gap:10px;align-items:center;margin-top:8px">
+    <button class="btn btn-primary" type="submit">
+      Envoyer
+    </button>
+  </div>
+
+</form>
         </div>
         <div style="padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005))">
           <h4>Infos rapides</h4>
@@ -258,17 +295,6 @@
       if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
     }
 
-    // Fake contact handler (démo) - remplace par un endpoint réel (Formspree, Netlify, backend)
-    function sendForm(e){
-      e.preventDefault();
-      const status = document.getElementById('formStatus');
-      status.textContent = 'Envoi...';
-      // Simule envoi
-      setTimeout(()=>{
-        status.textContent = 'Message envoyé — merci !';
-        document.getElementById('contactForm').reset();
-      },900);
-    }
 
     // Small typing effect for the hero (simple)
     (function(){
